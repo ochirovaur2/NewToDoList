@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+
+		}
+		#top{
+			width: 100%;
+			height: 10vh;
+			line-height: 10vh;
+			text-align: center;
+			background-color;
+			color: white;
+			background: rgb(0,0,0);
+            background: linear-gradient(243deg, rgba(0,0,0,1) 0%, rgba(57,137,128,1) 100%);
+            
+		}
+		#main{
+			position: relative;
+			width: 95%;
+			height: 10vh;
+			margin: 3vh auto;
+			border-radius: 10px;
+			background-color: #343a40;
+			padding-left: 3px;
+			padding-right: 3px;
+			text-align: center;
+			line-height: 10vh;
+			color: white;
+ 			
+
+		}
+		.day{
+			position: relative;
+			box-sizing: border-box;
+			
+			float: left;
+			width: 25%;
+			height: 35vh;
+			background-color: #345;
+			border: 1px solid black;
+			border-radius: 10px;
+			transition: 0.3s;
+		}
+		
+
+		.btn{
+			position: absolute;
+			bottom:  5%;
+			right: 5%;
+			background-color: #1798c6;
+			width: 8vh;
+			height: 8vh;
+			border: none;
+			border-radius: 50%;
+			transform: rotate(45deg);
+			font-size: 130%;
+			color: white;
+			
+		}
+		.btn2{
+			position: absolute;
+			visibility: hidden;
+			bottom:  5%;
+			right: 5%;
+			width: 8vh;
+			height: 8vh;
+			background: #1798c6;
+			border: none;
+			border-radius: 50%;
+			transform: rotate(-45deg);
+			font-size: 130%;
+			color: white;
+		}
+		h3{
+			line-height: 7vh;
+		}
+		.input{
+			position: absolute;
+			bottom: 5%;
+			left: 3%;
+
+		}
+		.inputOfText{
+			visibility: hidden;
+			border: none;
+			height: 5vh;
+		    line-height: 5vh;
+		    width: 40vw;
+		    padding: 7px;
+		    float: left;
+		    
+		    
+		}
+		.addBtn {
+			visibility: hidden;
+		    height: 5vh;
+		    line-height: 5vh;
+		    width: 14vw;
+		    background: #d9d9d9;
+		    color: #555;
+		    float: left;
+		    text-align: center;
+		    font-size: 1em;
+		    cursor: pointer;
+		    
+		}
+
+		.addBtn:hover {
+		    background-color: #bbb;
+		}
+		.listOfToDo{
+			width: 90%;
+			margin: 0 auto;
+			height: 16vh;
+			background-color: #345;
+			overflow-y: auto;
+
+		}
+		ul {
+		    margin: 0;
+		    padding: 0;
+		    list-style: none;
+		}
+
+		ul li {
+		    cursor: pointer;
+		    position: relative;
+		    padding: 12px 0px 12px 0px;
+		    color: black;
+		    background: #eee;
+		    line-height: 3vh;
+		    
+		    transition: 0.2s;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    border-radius: 5px;
+		}
+
+		ul li:nth-child(odd) {
+
+		    background: #f9f9f9;
+		}
+
+		ul li:hover {
+		    background: #ddd;
+		}
+
+		ul li.checked {
+		    background: #888;
+		    color: #fff;
+		    text-decoration: line-through;
+		}
+		ul li.checked::before {
+		    content: '';
+		    position: absolute;
+		    border-color: #30f271;
+		    border-style: solid;
+		    border-width: 0 2px 2px 0;
+		    top: 5px;
+		    left: 10px;
+		    transform: rotate(45deg);
+		    height: 5px;
+		    width: 2.5px;
+
+		}
+		.close {
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    padding: 12px 16px 12px 16px;
+		}
+
+		.close:hover {
+		    background-color: #f44336;
+		    color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="top">
+		<h1>To-Do List</h1>
+	</div>
+	<div  id="main">
+		<h2>&#8577;ays of week </h2>
+		<div class="day" id="day1">
+			<h3>Monday</h3>
+			<div class="listOfToDo">
+				<ul  id="list">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoEl">
+				<span class="addBtn" onclick="newElement()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day2">
+			<h3>Tuesday</h3>
+			<div class="listOfToDo">
+				<ul  id="listOfTuesday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfTuesday">
+				<span class="addBtn" onclick="newElementOfTuesday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day3">
+			<h3>Wednesday</h3>
+			<div class="listOfToDo">
+				<ul  id="listOfWednesday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfWednesday">
+				<span class="addBtn" onclick="newElementOfWednesday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day4">
+			<h3>Thursday</h3>
+			<div class="listOfToDo">
+				<ul  id="listOfThursday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfThursday">
+				<span class="addBtn" onclick="newElementOfThursday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;" >
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day5">
+			<h3>Friday</h3>
+			<div class="listOfToDo">
+				<ul  id="listOfFriday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfFriday">
+				<span class="addBtn" onclick="newElementOfFriday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day6">
+			<h3>Saturday</h3>
+			<div class="listOfToDo">
+				<ul  id="listOfSaturday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfSaturday">
+				<span class="addBtn" onclick="newElementOfSaturday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day7">
+			<h3>Sunday</h3> 
+			<div class="listOfToDo">
+				<ul  id="listOfSunday">
+					
+	   			 </ul>
+   			 </div>
+			<div class="input">
+	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfSunday">
+				<span class="addBtn" onclick="newElementOfSunday()">Добавить</span>
+			</div>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;">
+		</div>
+		<div class="day" id="day8">
+			<h3>Statistics</h3>
+			<input type="button" name="" class="btn" value="&#8596;">
+			<input type="button" name="" class="btn2" value="&#8596;" >
+		</div>
+	</div>
+	<script>
+
+		//Add Data to LocalStorage
+		var todos;
+        function toLocal() {
+          todos = document.getElementById('list').innerHTML;
+          localStorage.setItem("todos", todos);
+        };
+
+        var todosOfTuesday;
+        function toLocalOfTuesday() {
+          todosOfTuesday = document.getElementById('listOfTuesday').innerHTML;
+          localStorage.setItem("todosOfTuesday", todosOfTuesday);
+        };
+		var todosOfWednesday;
+        function toLocalOfWednesday() {
+          todosOfWednesday = document.getElementById('listOfWednesday').innerHTML;
+          localStorage.setItem("todosOfWednesday", todosOfWednesday);
+        };
+        var todosOfThursday;
+        function toLocalOfThursday() {
+          todosOfThursday = document.getElementById('listOfThursday').innerHTML;
+          localStorage.setItem("todosOfThursday", todosOfThursday);
+        };
+        var todosOfFriday;
+        function toLocalOfFriday() {
+          todosOfFriday = document.getElementById('listOfFriday').innerHTML;
+          localStorage.setItem("todosOfFriday", todosOfFriday);
+        };
+        var todosOfSaturday;
+        function toLocalOfSaturday() {
+          todosOfSaturday = document.getElementById('listOfSaturday').innerHTML;
+          localStorage.setItem("todosOfSaturday", todosOfSaturday);
+        };
+        var todosOfSunday;
+        function toLocalOfSunday() {
+          todosOfSunday = document.getElementById('listOfSunday').innerHTML;
+          localStorage.setItem("todosOfSunday", todosOfSunday);
+        };
+
+        
+
+
+        //Change CSS 
+		var main = document.querySelector('#main');
+		main.addEventListener('click', function (ev) {
+		    if(ev.target.classList.contains("btn")) {
+		    	var day = document.getElementsByClassName('day');
+				for (var i = 0; i < day.length; i++) {
+					day[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+		       ev.target.parentElement.style.cssText =
+				`
+				position: absolute;
+				z-index: 2;
+				width: 100%;
+				height: 70vh;
+
+				`;
+				ev.target.style.cssText =
+				`
+				position: absolute;
+				z-index: -111;
+				visibility: hidden;
+				
+				`;
+				var btn2 = document.getElementsByClassName('btn2');
+				for (var i = 0; i < btn2.length; i++) {
+					btn2[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var inputOfText = document.getElementsByClassName('inputOfText');
+				for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var addBtn = document.getElementsByClassName('addBtn');
+				for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var listOfToDo = document.getElementsByClassName('listOfToDo');
+				for (var i = 0; i < listOfToDo.length; i++) {
+					listOfToDo[i].style.cssText =
+				`
+				
+				height: 48vh;
+				
+				`
+				;}
+				var close = document.getElementsByClassName('close');
+				for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				
+				
+		    } 
+		}, false);
+		
+		main.addEventListener('click', function (ev) {
+			if(ev.target.classList.contains("btn2")) {
+				ev.target.parentElement.style.cssText =
+				`
+				position: relative;
+				z-index: auto;
+				width: 25%;
+				height: 35vh;
+				transition: .2s;
+				`;
+				var btn = document.getElementsByClassName('btn');
+				for (var i = 0; i < btn.length; i++) {
+					btn[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				var btn2 = document.getElementsByClassName('btn2');
+				for (var i = 0; i < btn2.length; i++) {
+					btn2[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var inputOfText = document.getElementsByClassName('inputOfText');
+				for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var addBtn = document.getElementsByClassName('addBtn');
+				for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var listOfToDo = document.getElementsByClassName('listOfToDo');
+				for (var i = 0; i < listOfToDo.length; i++) {
+					listOfToDo[i].style.cssText =
+				`
+				
+				height: 22vh;
+				
+				`
+				;}
+				var close = document.getElementsByClassName('close');
+				for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+				`
+				
+				visibility: hidden;
+				
+				`
+				;}
+				var day = document.getElementsByClassName('day');
+				for (var i = 0; i < day.length; i++) {
+					day[i].style.cssText =
+				`
+				
+				visibility: visible;
+				
+				`
+				;}
+				
+			}
+		}, false);
+		//Delete from To-Do list and check of To-Do
+		var ul = document.querySelectorAll('ul');
+		for (var i = 0; i < ul.length; i++)
+		ul[i].addEventListener('click', function (ev) {
+		    if(ev.target.tagName === "LI") {
+		       ev.target.classList.toggle('checked');
+		    } else if(ev.target.tagName === "SPAN") {
+		       var div = ev.target.parentNode;
+		       div.remove();
+		    }
+		    toLocal();
+		    toLocalOfTuesday();
+		    toLocalOfWednesday();
+		    toLocalOfThursday();
+		    toLocalOfFriday();
+		    toLocalOfSaturday();
+		    toLocalOfSunday();
+		}, false);
+		//Create NewTodo
+		function newElement() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoEl').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('list').appendChild(li);
+		    }
+		    document.getElementById('toDoEl').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocal();
+		}
+		function newElementOfTuesday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfTuesday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfTuesday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfTuesday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfTuesday();
+		}
+		function newElementOfWednesday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfWednesday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfWednesday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfTuesday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfWednesday();
+		}
+		function newElementOfThursday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfThursday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfThursday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfThursday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfThursday();
+		}
+		function newElementOfFriday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfFriday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfFriday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfTFriday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfFriday();
+		}
+		function newElementOfSaturday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfSaturday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfSaturday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfTSaturday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfSaturday();
+		}
+		function newElementOfSunday() {
+		    var li = document.createElement('li');
+		    var inputValue = document.getElementById('toDoElOfSunday').value;
+		    var t = document.createTextNode(inputValue);
+		    li.appendChild(t);
+		    if(inputValue == "") {
+		       alert("Введите ваше дело!");
+		    } else {
+		       document.getElementById('listOfSunday').appendChild(li);
+		    }
+		    document.getElementById('toDoElOfSunday').value = "";
+		    var span = document.createElement('SPAN');
+		    var txt = document.createTextNode("X");
+		    span.className = "close";
+		    span.appendChild(txt);
+		    li.appendChild(span);
+		    toLocalOfSunday();
+		}
+
+		//Take data from LocalStorage
+		if(localStorage.getItem("todos")){
+	        document.getElementById('list').innerHTML = localStorage.getItem("todos");
+	        var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfTuesday")){
+	        document.getElementById('listOfTuesday').innerHTML = localStorage.getItem("todosOfTuesday");
+	        var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfWednesday")){
+        	document.getElementById('listOfWednesday').innerHTML = localStorage.getItem("todosOfWednesday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfThursday")){
+        	document.getElementById('listOfThursday').innerHTML = localStorage.getItem("todosOfThursday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfFriday")){
+        	document.getElementById('listOfFriday').innerHTML = localStorage.getItem("todosOfFriday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfSaturday")){
+        	document.getElementById('listOfSaturday').innerHTML = localStorage.getItem("todosOfSaturday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+       	if(localStorage.getItem("todosOfSunday")){
+        	document.getElementById('listOfSunday').innerHTML = localStorage.getItem("todosOfSunday");
+        	var close = document.getElementsByClassName('close');
+					for (var i = 0; i < close.length; i++) {
+					close[i].style.cssText =
+					`
+					
+					visibility: hidden;
+					
+					`
+				;}
+       	}
+	</script>
+</body>
+</html>
