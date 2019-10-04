@@ -8,24 +8,18 @@
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
-
+			
 		}
-		#top{
-			width: 100%;
-			height: 10vh;
-			line-height: 10vh;
-			text-align: center;
-			background-color;
-			color: white;
-			background: rgb(22, 21, 21);
-            
-            
+		body{
+			background-color: #EFEFEF;
 		}
 		#main{
-			position: relative;
+			position: fixed;
 			width: 95%;
 			height: 10vh;
-			margin: 3vh auto;
+			left: 50%;
+			transform: translate(-50%);
+			margin-top: 3vh;
 			border-radius: 10px;
 			background-color: #343a40;
 			padding-left: 3px;
@@ -42,7 +36,7 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			border: 10px solid transparent; border-right: 10px solid #fff; border-bottom: 10px solid #fff;
+			border: 10px solid transparent; border-right: 10px solid  #EFEFEF; border-bottom: 10px solid  #EFEFEF;
 			transform: rotate(180deg);
 		}
 		.day::after{
@@ -61,39 +55,40 @@
 			width: 25%;
 			height: 33vh;
 			background-color: #FECA00;
-			border: 1px solid white;
+			border: 1px solid  #EFEFEF;
 			font-size: 30px;
-			transition: 0.3s;
+			
 		}
 		
 
 		.btn{
 			position: absolute;
-			bottom:  3%;
-			right: 2%;
-			background-color: #1798c6;
-			width: 6vh;
-			height: 6vh;
+			bottom:  4px;
+			right: 1px;
+			background-color: #FECA00;
+			width: 7vh;
+			height: 7vh;
 			border: none;
-			border-radius: 50%;
-			transform: rotate(45deg);
-			font-size: 130%;
-			color: white;
+			
+			font-size: 6vh;
+			
+			color: black;
 			
 		}
 		.btn2{
 			position: absolute;
 			visibility: hidden;
-			bottom:  3%;
-			right: 2%;
-			width: 6vh;
-			height: 6vh;
-			background: #1798c6;
+			bottom:  10px;
+			right: 11px;
+			background-color: #FECA00;
+			width: 7vh;
+			height: 7vh;
+			
 			border: none;
-			border-radius: 50%;
-			transform: rotate(-45deg);
-			font-size: 130%;
-			color: white;
+			
+			
+			font-size: 6vh;
+			color: black;
 		}
 		h3{
 			line-height: 7vh;
@@ -109,6 +104,7 @@
 			border: none;
 			height: 5vh;
 		    line-height: 5vh;
+		    font-size: 2vh;
 		    width: 40vw;
 		    padding: 7px;
 		    float: left;
@@ -154,7 +150,7 @@
 		    background: #FECA00;
 		    line-height: 3vh;
 		    
-		    transition: 0.2s;
+		    
 		    -webkit-user-select: none;
 		    -moz-user-select: none;
 		    -ms-user-select: none;
@@ -173,9 +169,10 @@
 		}
 
 		ul li.checked {
-		    background: ;
 		    
+		    border: 1px solid  #00ff19;
 		    text-decoration: line-through;
+		    background-color: #fff;
 		}
 		ul li.checked::before {
 		    content: '';
@@ -204,123 +201,179 @@
 
 		}
 		.statistics{
-			line-height: 30px;
+			line-height:30px;
+			margin-bottom: 10px;
+
 		}
+		#warningOfDeleleAllInformation{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 50vw;
+			height: 50vh;
+			background-color: #db0000;
+			text-align: center;
+			padding-top: 10vh;
+			border-radius: 10px;
+			color: white;
+		}
+		#warningOfDeleleAllInformation button{
+			
+			margin: 5vh 5vh;
+			border: none;
+			background-color: #db0000;
+			font-size: 120%;
+			color: white;
+		}
+		#divOfLanguage{
+			position: absolute;
+			display: none;
+			z-index: -1111;
+			visibility: hidden;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 50vw;
+			height: 50vh;
+			background-color: #c19c13;
+			text-align: center;
+			padding-top: 10vh;
+			border-radius: 10px;
+			color: white;
+		}
+		.pForLanguage{
+			margin-bottom: 20px;
+			font-size: 40px;
+		}
+
 	</style>
 </head>
 <body>
-	<div id="top">
-		<h1>To-Do List</h1>
+	<div id="warningOfDeleleAllInformation">
+		<h2 id="Warning">Are you sure?</h2>
+		<button id="deleteAllYes">Yes</button> <button id="deleteAllNo">No</button>
+	</div>
+	<div id="divOfLanguage">
+		<p class="pForLanguage" id="russian">Russian</p>
+		<p class="pForLanguage" id="english">English</p>
 	</div>
 	<div  id="main">
-		<h2>&#8577;ays of week </h2>
+		<h2 id="NameOfApp">Do it now</h2>
 		<div class="day" id="day1">
-			<h3>Monday</h3>
+			<h3 id="Monday">Monday</h3>
 			<div class="listOfToDo">
 				<ul  id="list">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoEl">
-				<span class="addBtn" onclick="newElement()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoEl">
+				<span class="addBtn" onclick="newElement()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;">
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day2">
-			<h3>Tuesday</h3>
+			<h3 id="Tuesday">Tuesday</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfTuesday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfTuesday">
-				<span class="addBtn" onclick="newElementOfTuesday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfTuesday">
+				<span class="addBtn" onclick="newElementOfTuesday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;">
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day3">
-			<h3>Wednesday</h3>
+			<h3 id="Wednesday">Wednesday</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfWednesday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfWednesday">
-				<span class="addBtn" onclick="newElementOfWednesday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfWednesday">
+				<span class="addBtn" onclick="newElementOfWednesday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;">
+			<input type="button" name="" class="btn2" value="&#9745;" >
 		</div>
 		<div class="day" id="day4">
-			<h3>Thursday</h3>
+			<h3 id="Thursday">Thursday</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfThursday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfThursday">
-				<span class="addBtn" onclick="newElementOfThursday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfThursday">
+				<span class="addBtn" onclick="newElementOfThursday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;" >
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;" >
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day5">
-			<h3>Friday</h3>
+			<h3 id="Friday">Friday</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfFriday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfFriday">
-				<span class="addBtn" onclick="newElementOfFriday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfFriday">
+				<span class="addBtn" onclick="newElementOfFriday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;" >
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day6">
-			<h3>Saturday</h3>
+			<h3 id="Saturday">Saturday</h3>
 			<div class="listOfToDo">
 				<ul  id="listOfSaturday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfSaturday">
-				<span class="addBtn" onclick="newElementOfSaturday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSaturday">
+				<span class="addBtn" onclick="newElementOfSaturday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;" >
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day7">
-			<h3>Sunday</h3> 
+			<h3 id="Sunday">Sunday</h3> 
 			<div class="listOfToDo">
 				<ul  id="listOfSunday">
 					
 	   			 </ul>
    			 </div>
 			<div class="input">
-	   			<input class="inputOfText" type="text" placeholder="Введите новое дело..." id="toDoElOfSunday">
-				<span class="addBtn" onclick="newElementOfSunday()">Добавить</span>
+	   			<input class="inputOfText" type="text" placeholder="Type here..." id="toDoElOfSunday">
+				<span class="addBtn" onclick="newElementOfSunday()">Click</span>
 			</div>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;">
+			<input type="button" name="" class="btn" value="&#9998;">
+			<input type="button" name="" class="btn2" value="&#9745;">
 		</div>
 		<div class="day" id="day8">
-			<h3>Statistics</h3>
-			<ul id="ulOfStatistics">
-				<p class="statistics">Количество выполненных заданий: <span id='numberOfCheckedToDo'></span></p>
-			</ul>
-			
+			<h3 id="Menu">Menu</h3>
+			<div class="listOfToDo">
+				<ol id="ulOfStatistics">
+					<li class="statistics" ><span id="NumberOfCompletedTasks">Number of completed tasks: </span><ins id='numberOfCheckedToDo'></ins> </li> 
+					<li  class="statistics" id="beginNewWeek">Begin new week</li>
+					<li  class="statistics" id="deleteAll" >Delete all information</li>
+					<li class="statistics" id="language">Language</li>
+				</ol>
+			</div>
 			<br>
-			<input type="button" name="" class="btn" value="&#8596;">
-			<input type="button" name="" class="btn2" value="&#8596;" >
+			<input type="button" name="" class="btn" value="&#9998;">
+			<input type="button" name="" class="btn2" value="&#9745;" >
 		</div>
 	</div>
 	<script>
@@ -364,7 +417,7 @@
         };
         var statistics;
         function toLocalOfStatistics() {
-          statistics = document.getElementById('numberOfCheckedToDo').innerHTML;
+          statistics = NumberOfChecked;
           localStorage.setItem("statistics", statistics);
         };
 
@@ -528,9 +581,9 @@
 		}, false);
 		//Delete from To-Do list and check of To-Do
 		
-		
+
 		var NumberOfChecked = 0;
-		var savedNumberOfChecked;
+		
 		var ul = document.querySelectorAll('ul');
 		for (var i = 0; i < ul.length; i++)
 		ul[i].addEventListener('click', function (ev) {
@@ -540,13 +593,14 @@
 		       if(ev.target.classList.contains("checked")) {
 		       	   
 			       NumberOfChecked = NumberOfChecked + 1;
-			       savedNumberOfChecked = NumberOfChecked;
-			       document.getElementById('numberOfCheckedToDo').innerHTML = savedNumberOfChecked;
+			       
+			       
+			       document.getElementById('numberOfCheckedToDo').innerHTML = NumberOfChecked;
 			       toLocalOfStatistics();
 		       } else{
 			       NumberOfChecked = NumberOfChecked - 1;
-			       savedNumberOfChecked = NumberOfChecked;
-			       document.getElementById('numberOfCheckedToDo').innerHTML = savedNumberOfChecked;
+			       
+			       document.getElementById('numberOfCheckedToDo').innerHTML = NumberOfChecked;
 			       toLocalOfStatistics();
 		       }
 		       
@@ -607,7 +661,7 @@
 		    if(inputValue) {
 		       document.getElementById('listOfWednesday').appendChild(li);
 		    }
-		    document.getElementById('toDoElOfTuesday').value = "";
+		    document.getElementById('toDoElOfWednesday').value = "";
 		    var span = document.createElement('SPAN');
 		    var txt = document.createTextNode("X");
 		    span.className = "close";
@@ -768,6 +822,172 @@
 					`
 				;}
        	}
+       	if(localStorage.getItem("statistics")){
+        	document.getElementById('numberOfCheckedToDo').innerHTML = localStorage.getItem("statistics");
+        	NumberOfChecked = eval(document.getElementById('numberOfCheckedToDo').innerHTML);
+       	}
+
+
+       	document.getElementById('deleteAll').onclick = function(){
+
+       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+
+       		document.getElementById("deleteAllYes").onclick = function(){
+
+	       		document.getElementById('list').innerHTML = "";
+	       		toLocal();
+	       		document.getElementById('listOfTuesday').innerHTML = "";
+	       		toLocalOfTuesday();
+	       		document.getElementById('listOfWednesday').innerHTML = "";
+	       		toLocalOfWednesday();
+	       		document.getElementById('listOfThursday').innerHTML = "";
+	       		toLocalOfThursday();
+	       		document.getElementById('listOfFriday').innerHTML = "";
+	       		toLocalOfFriday();
+	       		document.getElementById('listOfSaturday').innerHTML = "";
+	       		toLocalOfSaturday();
+	       		document.getElementById('listOfSunday').innerHTML = "";
+	       		toLocalOfSunday();
+	       		document.getElementById('numberOfCheckedToDo').innerHTML = "";
+	       		NumberOfChecked = 0;
+	       		toLocalOfStatistics();
+	       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+	       	}
+	       	document.getElementById("deleteAllNo").onclick = function(){
+	       		document.getElementById('warningOfDeleleAllInformation').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+
+	       		
+	       	}
+       	};
+       	document.getElementById('beginNewWeek').onclick = function() {
+       		var beginNewWeek = document.querySelectorAll('li');
+			for (var i = 0; i < beginNewWeek.length; i++){
+				if(beginNewWeek[i].classList.contains("checked")) {
+			   	   	beginNewWeek[i].classList.toggle('checked');
+			   	   	toLocal();
+		       		toLocalOfTuesday();
+		       		toLocalOfWednesday();
+		       		toLocalOfThursday();
+		       		toLocalOfFriday();
+		       		toLocalOfSaturday();
+		       		toLocalOfSunday();
+		       		toLocalOfStatistics(); 
+			   	}
+	       	};
+		};
+		document.getElementById('language').onclick = function(){
+			document.getElementById('divOfLanguage').style.cssText =
+					`
+					
+					display: block;
+					z-index: 1111;
+					visibility: visible;
+					
+					`;
+			document.getElementById('russian').onclick = function() {
+				
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Введите новое дело...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Добавить";
+				}
+				document.getElementById('NameOfApp').innerHTML = "Список дел";
+				document.getElementById('Monday').innerHTML = "Понедельник";
+				document.getElementById('Tuesday').innerHTML = "Вторник";
+				document.getElementById('Wednesday').innerHTML = "Среда";
+				document.getElementById('Thursday').innerHTML = "Четверг";
+				document.getElementById('Friday').innerHTML = "Пятница";
+				document.getElementById('Saturday').innerHTML = "Суббота";
+				document.getElementById('Sunday').innerHTML = "Воскресенье";
+				document.getElementById('Menu').innerHTML = "Меню";
+				document.getElementById('beginNewWeek').innerHTML = "Начать новую неделю";
+				document.getElementById('deleteAll').innerHTML = "Удалить все";
+				document.getElementById('language').innerHTML = "Язык";
+				document.getElementById('russian').innerHTML = "Русский";
+				document.getElementById('english').innerHTML = "Английский";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Кол-во выполненных дел: ";
+				document.getElementById('Warning').innerHTML = "Вы уверены?";
+				document.getElementById('deleteAllYes').innerHTML = "Да";
+				document.getElementById('deleteAllNo').innerHTML = "Нет";
+
+				
+
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+			
+			}
+			document.getElementById('english').onclick = function() {
+				
+				var inputOfText = document.getElementsByClassName('inputOfText');
+					for (var i = 0; i < inputOfText.length; i++) {
+					inputOfText[i].placeholder = "Type here...";
+				}
+				var addBtn = document.getElementsByClassName('addBtn');
+					for (var i = 0; i < addBtn.length; i++) {
+					addBtn[i].innerHTML = "Click";
+				}
+				document.getElementById('NameOfApp').innerHTML = "To-Do list";
+				document.getElementById('Monday').innerHTML = "Monday";
+				document.getElementById('Tuesday').innerHTML = "Tuesday";
+				document.getElementById('Wednesday').innerHTML = "Wednesday";
+				document.getElementById('Thursday').innerHTML = "Thursday";
+				document.getElementById('Friday').innerHTML = "Friday";
+				document.getElementById('Saturday').innerHTML = "Saturday";
+				document.getElementById('Sunday').innerHTML = "Sunday";
+				document.getElementById('Menu').innerHTML = "Menu";
+				document.getElementById('beginNewWeek').innerHTML = "Begin new week";
+				document.getElementById('deleteAll').innerHTML = "Delete all information";
+				document.getElementById('language').innerHTML = "Language";
+				document.getElementById('russian').innerHTML = "Russian";
+				document.getElementById('english').innerHTML = "English";
+				document.getElementById('NumberOfCompletedTasks').innerHTML = "Number of completed tasks: ";
+				document.getElementById('Warning').innerHTML = "Are you sure?";
+				document.getElementById('deleteAllYes').innerHTML = "Yes";
+				document.getElementById('deleteAllNo').innerHTML = "No";
+
+				
+
+				document.getElementById('divOfLanguage').style.cssText =
+					`
+					
+					display: none;
+					z-index: -1111;
+					visibility: hidden;
+					
+					`;
+			
+			}
+		};
        	
 
 	</script>
